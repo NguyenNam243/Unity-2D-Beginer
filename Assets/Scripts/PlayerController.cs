@@ -16,13 +16,11 @@ public class PlayerController : MonoBehaviour
 
     private bool onGround = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
@@ -44,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Force);
+        rigidbody.AddForce(transform.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
     }
 
 
