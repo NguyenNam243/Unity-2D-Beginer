@@ -1502,7 +1502,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &4105362946045768374
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1531,6 +1531,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f24187471b34c4d860d3c7e5298497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
   moveSpeed: 5
-  jumpForce: 500
+  jumpForce: 750

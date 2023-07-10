@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rigidbody = null;
     public float moveSpeed = 5f;
     public float jumpForce = 500f;
 
@@ -15,10 +14,16 @@ public class PlayerController : MonoBehaviour
     private float eulerAngleY = 0f;
 
     private bool onGround = false;
+    private bool onJumpKey = false;
+    private bool firtJump = true;
+
+    private Rigidbody2D rigidbody = null;
+    private Animator characterAnimator = null;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        characterAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -34,15 +39,33 @@ public class PlayerController : MonoBehaviour
         if (horizontalDown)
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, eulerAngleY, transform.eulerAngles.z);
 
-        if (Input.GetKeyDown(KeyCode.Space) && onGround)
+        onJumpKey = Input.GetKeyDown(KeyCode.Space);
+
+        if (onJumpKey && onGround)
         {
             Jump();
         }
+        SetAnimation();
+    }
+
+    private void SetAnimation()
+    {
+        if (horizontalDown)
+            characterAnimator.SetBool("Run", true);
+        else
+        {
+            if (onGround)
+                characterAnimator.SetBool("Run", false);
+        }
+
+        if (onJumpKey && onGround)
+            characterAnimator.SetTrigger("Jump");
     }
 
     private void Jump()
     {
         rigidbody.AddForce(transform.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
+
     }
 
 
@@ -50,7 +73,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground") || collision.gameObject.layer == 6)
         {
+            if (!firtJump)
+                characterAnimator.SetTrigger("Idle");
+
             onGround = true;
+            firtJump = false;
             Debug.Log("OnGround");
         }
     }
