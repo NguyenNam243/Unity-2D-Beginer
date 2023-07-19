@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         if (horizontalDown)
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, eulerAngleY, transform.eulerAngles.z);
 
-        onJumpKey = Input.GetKeyDown(KeyCode.Space);
+        onJumpKey = Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyUp(KeyCode.Space);
 
         if (onJumpKey && onGround)
         {

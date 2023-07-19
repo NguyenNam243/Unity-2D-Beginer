@@ -1785,6 +1785,7 @@ GameObject:
   - component: {fileID: 4105362946045768374}
   - component: {fileID: 4105362946045768373}
   - component: {fileID: 4105362946045768375}
+  - component: {fileID: 4105362946045768376}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -1877,8 +1878,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f24187471b34c4d860d3c7e5298497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 750
+  moveSpeed: 999
+  jumpForce: 999999
+--- !u!114 &4105362946045768376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105362946045768369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63109c98a882d7844981cdecbedb9ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 0}
 --- !u!114 &6827290911984711176
 MonoBehaviour:
   m_ObjectHideFlags: 0
